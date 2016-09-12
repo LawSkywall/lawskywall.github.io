@@ -1,4 +1,4 @@
-warrior="Law_842_default"
+warrior="Law"
 level=110
 race=gnome
 region=us
@@ -14,7 +14,7 @@ neck=,id=130243,enchant_id=5319,bonus_id=1782/689/600/669,gem_id=130222
 shoulder=,id=134228,bonus_id=1727/42/1502/1813
 back=,id=134406,enchant_id=5431,bonus_id=1727/1492/1813
 chest=,id=121221,bonus_id=3397/1711/1622/1675
-wrist=,id=139688,bonus_id=3386/3383,gem_id=130222
+wrist=,id=134230,bonus_id=3397/1492/1675
 hands=,id=139683,bonus_id=3386/3384
 waist=,id=137436,bonus_id=1727/1492/1813
 legs=,id=134271,bonus_id=3396/1808/1492/3339,gem_id=130218
@@ -25,7 +25,6 @@ trinket1=,id=139102,bonus_id=3396/40/605/1492/3339
 trinket2=,id=136715,bonus_id=1727/1492/1813
 main_hand=,id=128910,bonus_id=750,relic_id=1726:1482:3339/1726:1482:3339/1727:1492:1813,gem_id=133763/137363/137317/0
 
-
 # This default action priority list is automatically created based on your character.
 # It is a attempt to provide you with a action list that is both simple and practicable,
 # while resulting in a meaningful and good simulation. It may not result in the absolutely highest possible dps.
@@ -33,6 +32,7 @@ main_hand=,id=128910,bonus_id=750,relic_id=1726:1482:3339/1726:1482:3339/1727:14
 # SimulationCraft is always looking for updates and improvements to the default action lists.
 
 # Executed before combat begins. Accepts non-harmful actions only.
+
 actions.precombat=flask,type=countless_armies
 actions.precombat+=/food,type=nightborne_delicacy_platter
 actions.precombat+=/augmentation,type=defiled
@@ -41,6 +41,7 @@ actions.precombat+=/snapshot_stats
 actions.precombat+=/potion,name=deadly_grace
 
 # Executed every time the actor is available.
+
 actions=charge
 actions+=/auto_attack
 actions+=/potion,name=deadly_grace,if=(target.health.pct<20&buff.battle_cry.up)|target.time_to_die<=26
