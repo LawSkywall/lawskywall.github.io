@@ -221,7 +221,7 @@ shoulder=,id=134228,bonus_id=1727/42/1502/1813
 back=,id=134406,enchant_id=5431,bonus_id=1727/1492/1813
 chest=,id=121221,bonus_id=3397/1711/1622/1675
 wrist=,id=139688,bonus_id=3386/3383,gem_id=130222
-hands=,id=137060,bonus_id=3386/3384z
+hands=,id=137060
 waist=,id=137436,bonus_id=1727/1492/1813
 legs=,id=134271,bonus_id=3396/1808/1492/3339,gem_id=130218
 feet=,id=134523,bonus_id=1727/1808/1497/3336,gem_id=130222
