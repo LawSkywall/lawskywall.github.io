@@ -39,7 +39,6 @@ actions.single+=/mortal_strike,if=buff.focused_rage.stack=0&buff.shattered_defen
 actions.single+=/slam,if=target.health.pct>20&(debuff.colossus_smash.up|rage.deficit<40)&(!talent.focused_rage.enabled|talent.deadly_calm.enabled&buff.battle_cry.up)
 actions.single+=/whirlwind,if=target.health.pct>20&talent.fervor_of_battle.enabled&(debuff.colossus_smash.up|rage.deficit<50)&(!talent.focused_rage.enabled|(talent.deadly_calm.enabled&buff.battle_cry.up)|buff.cleave.up)
 actions.single+=/rend,if=remains<=duration*0.3
-actions.single+=/heroic_charge
 actions.single+=/whirlwind,if=target.health.pct>20&talent.fervor_of_battle.enabled&(!talent.focused_rage.enabled|rage>100|buff.focused_rage.stack=3)
 actions.single+=/slam,if=target.health.pct>20&(rage>50|(buff.focused_rage.stack=3&rage>16))
 actions.single+=/shockwave
