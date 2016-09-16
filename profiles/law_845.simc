@@ -4,27 +4,26 @@ race=gnome
 region=us
 server=skywall
 role=attack
-professions=blacksmithing=761/engineering=718
-talents=3332311
+professions=blacksmithing=761/engineering=719
+talents=1332311
 spec=arms
-artifact=36:0:0:0:0:1136:1:1137:1:1139:1:1142:1:1145:3:1146:3:1148:3:1149:3:1150:3:1356:1
+artifact=36:0:0:0:0:1136:1:1137:1:1139:1:1141:1:1142:1:1145:3:1146:3:1148:3:1149:3:1150:3:1356:1
 
 head=,id=139684,bonus_id=3385/3384
-neck=,id=130243,enchant_id=5319,bonus_id=1782/689/600/669,gem_id=130222
+neck=,id=130243,enchant_id=5438,bonus_id=1782/689/600/669,gem_id=130222
 shoulder=,id=134228,bonus_id=1727/42/1502/1813
-back=,id=134404,enchant_id=5431,bonus_id=1727/1492/1813
+back=,id=134402,bonus_id=1727/1492/1813
 chest=,id=137527,bonus_id=1727/1502/3336
 wrist=,id=134230,bonus_id=3397/1492/1675
 hands=,id=137525,bonus_id=1727/1492/1813
 waist=,id=137436,bonus_id=1727/1492/1813
-legs=,id=134271,bonus_id=3396/1808/1492/3339,gem_id=130218
+legs=,id=139685,bonus_id=3386/3384
 feet=,id=134523,bonus_id=1727/1808/1497/3336,gem_id=130222
 finger1=,id=134487,bonus_id=1727/1497/3336
-finger2=,id=130230,enchant_id=5425,bonus_id=3369/689/600/669,gem_id=130222
+finger2=,id=136713,enchant_id=5425,bonus_id=3358/689/600/669,gem_id=130222
 trinket1=,id=137459,bonus_id=1727/1492/1813
 trinket2=,id=139102,bonus_id=3432/605/1502/3336
 main_hand=,id=128910,bonus_id=750,relic_id=1727:1502:3336/1726:1482:3339/1727:1492:1813,gem_id=137326/137363/137317/0
-
 
 # This default action priority list is automatically created based on your character.
 # It is a attempt to provide you with a action list that is both simple and practicable,
