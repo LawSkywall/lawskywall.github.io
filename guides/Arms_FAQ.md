@@ -28,7 +28,7 @@ The rotation is fundamentally the same as your normal rotation, and follows the 
 
 The normal rotation can be found
 
-**How much better are EtW relics?**
+**How much better are Exploit the Weakness relics?**
 825 EtW relics are better than 850 non-EtW relics.
 
 ![EtW Trinket sim results](https://images-1.discordapp.net/.eJwFwVEOgyAMANC7cAAKBVnnbQgSNFNKaI0fy-6-977mnqdZza46ZAXYDik8NyvKM7dqG3M7ax6H2MIXZNVc9qt2FfCR6E0vdOTCQslFAsQUKERKGHFB752Du386P92O3szvDwhhItg.e_RgUgI7_Gug-MvSBn_-M9UbWb4)
