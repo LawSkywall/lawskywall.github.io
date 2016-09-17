@@ -26,7 +26,7 @@ Execute during Battle Cry when Colossus Smash and Mortal Strike are down.  If yo
 ##What is my rotation during Battle Cry?
 The rotation is fundamentally the same as your normal rotation, and follows the same rules as the rotation outside of Battle Cry.  The exceptions to this are that you should cast Hamstring (it's off the global cooldown), and you are allowed to exceed 3 stacks of Focused Rage.  When considering Slam/Execute, decide to cast these abilities as if you had full rage, even if you don't.
 
-The normal rotation can be found
+The normal rotation can be found (on Wowhead's Arms rotation guide](http://www.wowhead.com/guides/classes/warrior/arms/rotation).  The "Focused Rage" rotation is the most performant (along with the Focused Rage talents).
 
 ##How much better are Exploit the Weakness relics?
 825 EtW relics are better than 850 non-EtW relics.
