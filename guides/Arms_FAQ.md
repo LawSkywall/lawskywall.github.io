@@ -10,7 +10,7 @@ Mastery > Strength > Versatility > Crit, with haste either being ahead of Master
 
 For the most accurate stat priorities, it's advised to run your character through Simulationcraft.
 
-##When do I Mortal Strike?
+##When do I cast Mortal Strike?
 Cast MS as soon as you can, do not wait for 3 Focused Rage stacks.  It's less important whether or not you wait for 3 FR stacks, and more important that you NOT use FR if you already have 3 FR stacks.  The exception to this is during Battle Cry, when you can hit FR constantly (at this point you're using the fact that FR is off the GCD to fish for Tactician procs).
 
 One way of making sure FR and Hamstring are cast as much as possible during Battle Cry is to bind this macro to a key you can hit quickly during BC (mousewheel up/down is a good candidate):
@@ -20,13 +20,13 @@ One way of making sure FR and Hamstring are cast as much as possible during Batt
 /cast Hamstring
 ```
 
-##When do I cast Execute?
-Execute during Battle Cry when Colossus Smash and Mortal Strike are down.  If you have the legendary ring, use your Execute proc before you cast Mortal Strike.
-
 ##What is my rotation during Battle Cry?
 The rotation is fundamentally the same as your normal rotation, and follows the same rules as the rotation outside of Battle Cry.  The exceptions to this are that you should cast Hamstring (it's off the global cooldown), and you are allowed to exceed 3 stacks of Focused Rage.  When considering Slam/Execute, decide to cast these abilities as if you had full rage, even if you don't.
 
 The normal rotation can be found (on Wowhead's Arms rotation guide](http://www.wowhead.com/guides/classes/warrior/arms/rotation).  The "Focused Rage" rotation is the most performant (along with the Focused Rage talents).
+
+##When do I cast Execute?
+Once your target's health has reached 20%, you will cast Execute instead of Mortal Strike, and no longer use rage on Focused Rage outside of Battle Cry.  If you don't have a Shattered Defenses buff, you can cast Execute at any rage, however once you obtain a Shattered Defenses buff, hold casting Execute until you can give Execute maximum rage (40).
 
 ##How much better are Exploit the Weakness relics?
 825 EtW relics are better than 850 non-EtW relics.
