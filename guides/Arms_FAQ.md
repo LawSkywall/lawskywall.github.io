@@ -28,6 +28,8 @@ The normal rotation can be found [on Wowhead's Arms rotation guide](http://www.w
 ##When do I cast Execute?
 Once your target's health has reached 20%, you will cast Execute instead of Mortal Strike, and no longer use rage on Focused Rage outside of Battle Cry.  If you don't have a Shattered Defenses buff, you can cast Execute at any rage, however once you obtain a Shattered Defenses buff, hold casting Execute until you can give Execute maximum rage (40).
 
+Note: You will still cast Mortal Strike to consume 3xFR stacks obtained during Battle Cry.
+
 ##How much better are Exploit the Weakness relics?
 825 EtW relics are better than 850 non-EtW relics.
 
