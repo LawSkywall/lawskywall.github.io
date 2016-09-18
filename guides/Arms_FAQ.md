@@ -10,6 +10,10 @@ Mastery > Strength > Versatility > Crit, with haste either being ahead of Master
 
 For the most accurate stat priorities, it's advised to run your character through Simulationcraft.
 
+##What neck enchant is best?
+
+Mark of the
+
 ##When do I cast Mortal Strike?
 Cast MS as soon as you can, do not wait for 3 Focused Rage stacks.  It's less important whether or not you wait for 3 FR stacks, and more important that you NOT use FR if you already have 3 FR stacks.  The exception to this is during Battle Cry, when you can hit FR constantly (at this point you're using the fact that FR is off the GCD to fish for Tactician procs).
 
@@ -28,7 +32,7 @@ The normal rotation can be found [on Wowhead's Arms rotation guide](http://www.w
 ##When do I cast Execute?
 Once your target's health has reached 20%, you will cast Execute instead of Mortal Strike, and no longer use rage on Focused Rage outside of Battle Cry.  If you don't have a Shattered Defenses buff, you can cast Execute at any rage, however once you obtain a Shattered Defenses buff, hold casting Execute until you can give Execute maximum rage (40).
 
-Note: You will still cast Mortal Strike to consume 3xFR stacks obtained during Battle Cry, even when the target is at or less than 20%.
+Note: You will still cast Mortal Strike **during Battle Cry** to consume 3xFR stacks obtained within Battle Cry, even when the target is at or less than 20%.
 
 ##How much better are Exploit the Weakness relics?
 825 EtW relics are better than 850 non-EtW relics.
