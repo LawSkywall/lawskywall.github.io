@@ -7,7 +7,7 @@
 * Faulty Countermeasure (825+)
 * Giant Ornamental Pearl (825+)
 * Hunger of the Pack (825+)
-* Impact Tremor (820+)
+* Impact Tremor (825+)
 * Mark of Dargrul (825+)
 * Memento of Angerboda (825+)
 * Might of Krosus (845+)
