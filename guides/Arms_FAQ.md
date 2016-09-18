@@ -12,11 +12,11 @@ For the most accurate stat priorities, it's advised to run your character throug
 
 ##What neck enchant is best?
 
-![Use whatever neck enchant you want](https://i.gyazo.com/92ae3774ae137936c02e61c4471e22e0.png)
+![Use whatever neck enchant you want](neck_enchant_sim_result.png)
 
-## What potion is best for arms?
+##What potion is best?
 
-[Potion of Deadly Grace](http://www.wowhead.com/item=127843/potion-of-deadly-grace)
+![Use deadly grace or old war](potion_sim_result.png)
 
 ##When do I cast Mortal Strike?
 Cast MS as soon as you can, do not wait for 3 Focused Rage stacks.  It's less important whether or not you wait for 3 FR stacks, and more important that you NOT use FR if you already have 3 FR stacks.  The exception to this is during Battle Cry, when you can hit FR constantly (at this point you're using the fact that FR is off the GCD to fish for Tactician procs).
