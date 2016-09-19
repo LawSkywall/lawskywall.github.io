@@ -39,7 +39,7 @@ Once your target's health has reached 20%, you will cast Execute instead of Mort
 Note: You will still cast Mortal Strike **during Battle Cry** to consume 3xFR stacks obtained within Battle Cry, even when the target is at or less than 20%.
 
 ##How much better are Exploit the Weakness relics?
-825 EtW relics are better than 850 non-EtW relics.
+825 EtW relics are better than 850 non-dps relics.
 
 ![EtW Trinket sim results](https://images-1.discordapp.net/.eJwFwVEOgyAMANC7cAAKBVnnbQgSNFNKaI0fy-6-977mnqdZza46ZAXYDik8NyvKM7dqG3M7ax6H2MIXZNVc9qt2FfCR6E0vdOTCQslFAsQUKERKGHFB752Du386P92O3szvDwhhItg.e_RgUgI7_Gug-MvSBn_-M9UbWb4)
 
