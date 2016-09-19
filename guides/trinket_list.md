@@ -1,5 +1,7 @@
 #Trinket BiS List (in order)
 
+###### **Note:** This is a work in progress, and does not represent a finalize, authoritative list.  Use this as a guideline, rather than absolute fact.
+
 Trinket Name|DPS
 ---------|---------
 Chrono Shard_895|376949
