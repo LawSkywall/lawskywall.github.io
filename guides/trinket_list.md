@@ -75,7 +75,7 @@ Darkmoon Deck: Dominion_855|365354
 Spiked Counterweight_895|365208
 Gift of Radiance_840|365196
 Darkmoon Deck: Dominion_850|365133
-Infernal Alchemist Stone_855|36511
+Infernal Alchemist Stone_855|365118
 Hunger of the Pack_855|365107
 Memento of Angerboda_840|365086
 Chaos Talisman_845|365047
@@ -85,7 +85,7 @@ Terrorbound Nexus_870|364920
 Chrono Shard_840|364872
 Strand of the Stars_880|364787
 Chaos Talisman_840|364775
-Infernal Alchemist Stone_850|36471
+Infernal Alchemist Stone_850|364713
 Strand of the Stars_885|364708
 Gift of Radiance_835|364680
 Spiked Counterweight_885|364602
@@ -103,7 +103,7 @@ Darkmoon Deck: Dominion_845|363898
 Hunger of the Pack_845|363877
 Darkmoon Deck: Dominion_840|363866
 Strand of the Stars_865|363646
-Infernal Alchemist Stone_845|36364
+Infernal Alchemist Stone_845|363643
 Chaos Talisman_835|363469
 Strand of the Stars_870|363461
 Terrorbound Nexus_855|363357
@@ -114,7 +114,7 @@ Spiked Counterweight_870|363084
 Ursoc's Rending Paw_865|363020
 Memento of Angerboda_825|362993
 Strand of the Stars_855|362949
-Infernal Alchemist Stone_840|36293
+Infernal Alchemist Stone_840|362933
 Strand of the Stars_860|362914
 Darkmoon Deck: Dominion_835|362872
 Hunger of the Pack_840|362781
@@ -126,7 +126,7 @@ Terrorbound Nexus_845|362458
 Hunger of the Pack_835|362451
 Strand of the Stars_850|362395
 Terrorbound Nexus_850|362336
-Infernal Alchemist Stone_835|36229
+Infernal Alchemist Stone_835|362298
 Marfisi's Giant Censer_845|362279
 Darkmoon Deck: Dominion_830|362268
 Strand of the Stars_845|362059
@@ -137,7 +137,7 @@ Spontaneous Appendages_885|361936
 Darkmoon Deck: Dominion_825|361893
 Nature's Call_890|361889
 Spontaneous Appendages_890|361852
-Infernal Alchemist Stone_830|36176
+Infernal Alchemist Stone_830|361769
 Strand of the Stars_840|361761
 Spiked Counterweight_855|361698
 Nature's Call_895|361682
@@ -154,16 +154,16 @@ Terrorbound Nexus_830|361073
 Terrorbound Nexus_835|360998
 Marfisi's Giant Censer_835|360953
 Darkmoon Deck: Dominion_820|360895
-Infernal Alchemist Stone_825|36084
+Infernal Alchemist Stone_825|360848
 Spiked Counterweight_845|360639
 Mark of Dargrul_895|360627
 Nature's Call_875|360611
-Infernal Alchemist Stone_820|36060
+Infernal Alchemist Stone_820|360600
 Spontaneous Appendages_875|360389
 Spontaneous Appendages_870|360383
 Nature's Call_870|360317
 Darkmoon Deck: Dominion_815|360297
-Infernal Alchemist Stone_815|36026
+Infernal Alchemist Stone_815|360268
 Marfisi's Giant Censer_830|360261
 Spiked Counterweight_840|360160
 Spontaneous Appendages_865|359925
