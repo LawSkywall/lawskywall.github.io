@@ -14,9 +14,8 @@ For the most accurate stat priorities, it's advised to run your character throug
 
 ![Use whatever neck enchant you want](neck_enchant_sim_result.png)
 
-***ALERT!*** Mark of the Hidden Satyr is currently bugged (as of 7.0.3.22594)!  Procs will reset swing timer!  DO NOT USE Mark of the Hidden Satyr!
-
-http://us.battle.net/forums/en/wow/topic/20749334744#1
+Update: Mark of the Hidden Satyr is fixed
+https://www.warcraftlogs.com/reports/CMJGxpHLzmYRakjB/#view=events&type=damage-done&ability=1
 
 ##What potion is best?
 
