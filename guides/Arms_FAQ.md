@@ -48,7 +48,7 @@ The rotation is fundamentally the same as your normal rotation, and follows the 
 The normal rotation can be found [on Wowhead's Arms rotation guide](http://www.wowhead.com/guides/classes/warrior/arms/rotation).  The "Focused Rage" rotation is the most performant (along with the Focused Rage talents).
 
 ##When do I cast Execute?
-Once your target's health has reached 20%, you will cast Execute instead of Mortal Strike, and no longer use rage on Focused Rage outside of Battle Cry.  If you don't have a Shattered Defenses buff, you can cast Execute at any rage, however once you obtain a Shattered Defenses buff, hold casting Execute until you can give Execute maximum rage (40).
+Once your target's health has reached 20%, you will cast Execute instead of Mortal Strike, and no longer use rage on Focused Rage outside of Battle Cry.  If you don't have a Shattered Defenses buff, you can cast Execute at any rage, however once you obtain a Shattered Defenses buff, hold casting Execute until you can give Execute maximum rage (22).
 
 Note: You will still cast Mortal Strike **during Battle Cry** to consume 3xFR stacks obtained within Battle Cry, even when the target is at or less than 20%.
 
