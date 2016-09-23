@@ -3,23 +3,34 @@ It is not currently advised to build for haste to the exclusion of mastery.  The
 
 Furthermore, the 20% haste breakpoint is based on getting a 5th GCD into Battle Cry, which is effected by lag.  Therefore, the breakpoint may actually closer to 23-25% haste, depending on your latency.
 
-![Haste reforge chart](https://cdn.discordapp.com/attachments/148898720803586048/226718574520172545/IMG_1979.JPG)
+![Haste reforge chart](haste_breakpoints.jpg)
 
 ##What is my stat priority?
 Mastery > Strength > Versatility > Crit, with haste either being ahead of Mastery, or ahead of Versatility, depending on how close to the 20% haste breakpoint you are.
 
-For the most accurate stat priorities, it's advised to run your character through Simulationcraft.
+For the most accurate stat priorities, it's advised to run your character through [Simulationcraft](http://simulationcraft.org).
+
+##Wait, haste over versatility?
+
+Yep.  Here's a chart giving some explanation as to why:
+
+![Versatility reforge chart](hastetoversreforge1.PNG)
+
+For the most accurate stat priorities, it's advised to run your character through [Simulationcraft](http://simulationcraft.org).
 
 ##What neck enchant is best?
 
 ![Use whatever neck enchant you want](neck_enchant_sim_result.png)
 
-Update: Mark of the Hidden Satyr is fixed
+Update: Mark of the Hidden Satyr is fixed.
+
 https://www.warcraftlogs.com/reports/CMJGxpHLzmYRakjB/#view=events&type=damage-done&ability=1
 
 ##What potion is best?
 
 ![Use deadly grace or old war](potion_sim_result.png)
+
+Update: Potion of Old War is not behaving in-game the same as it's simming, and is doing much more damage than Potion of Deadly Grace.  As of WoW build 7.0.3.22624, it's recommended to use Potion of Old War.
 
 ##When do I cast Mortal Strike?
 Cast MS as soon as you can, do not wait for 3 Focused Rage stacks.  It's less important whether or not you wait for 3 FR stacks, and more important that you NOT use FR if you already have 3 FR stacks.  The exception to this is during Battle Cry, when you can hit FR constantly (at this point you're using the fact that FR is off the GCD to fish for Tactician procs).
