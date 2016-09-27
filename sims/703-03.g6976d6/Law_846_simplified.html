@@ -1,0 +1,143 @@
+
+DPS Ranking:
+ 296911 100.0%  Raid
+ 296911  100.0%  Law
+
+HPS Ranking:
+      0 100.0%  Raid
+
+Player: Law gnome warrior arms 110
+  DPS: 296911.5  DPS-Error=346.4/0.117%  DPS-Range=67044/22.6%  DPS-Convergence=70.7%
+  HPS: 0.0 HPS-Error=0.0/0.0%
+  DPR=33394.8  RPS-Out=8.9 RPS-In=8.9  Resource=(rage) Waiting=24.7 ApM=65.6
+  Talents: 1332311
+  Artifact: 36:0:0:0:0:1136:1:1137:1:1139:1:1141:1:1142:1:1143:1:1145:3:1146:3:1148:3:1149:3:1150:3:1356:1
+  Core Stats:    strength=23843|22478(21919)  agility=6254|6254(6254)  stamina=29552|29552(24576)  intellect=5003|5003(5003)  spirit=0|0(0)  health=1773120|1773120  mana=0|0
+  Generic Stats: mastery=84.44%|82.74%(11678)  versatility=8.69%|8.69%(3476)  leech=0.00%|0.00%(0)
+  Spell Stats:   power=0|0(0)  hit=15.00%|15.00%(0)  crit=7.11%|7.11%(737)  haste=9.25%|9.25%(2656)  speed=9.25%|9.25%  manareg=0|0(0)
+  Attack Stats:  power=23843|22478(0)  hit=7.50%|7.50%(0)  crit=7.11%|7.11%(737)  expertise=7.50%|7.50%(0)  haste=9.25%|9.25%(2656)  speed=9.25%|9.25%
+  Defense Stats: armor=3958|3958(3958) miss=3.00%|3.00%  dodge=3.00%|3.00%(0)  parry=15.59%|14.59%(0)  block=3.00%|3.00%(0) crit=0.00%|0.00%  versatility=4.35%|4.35%(3476)
+  Priorities (actions.precombat):
+    flask,type=countless_armies/food,type=barracuda_mrglgagh/snapshot_stats
+  Priorities:
+    charge/auto_attack
+    potion,name=old_war,if=(target.health.pct<20&buff.battle_cry.up)|target.time_to_die<=26
+    blood_fury,if=buff.battle_cry.up|target.time_to_die<=16
+    berserking,if=buff.battle_cry.up|target.time_to_die<=11
+    arcane_torrent,if=buff.battle_cry_deadly_calm.down&rage.deficit>40
+    battle_cry,if=(buff.bloodlust.up|time>=1)&!gcd.remains&(buff.shattered_defenses.up|(cooldown.colossus_smash.remains&cooldown.warbreaker.remains))|target.time_to_die<=10
+    avatar,if=(buff.bloodlust.up|time>=1)/rend,if=remains<gcd
+    focused_rage,if=buff.battle_cry_deadly_calm.remains>cooldown.focused_rage.remains&(buff.focused_rage.stack<3|!cooldown.mortal_strike.up)&((!buff.focused_rage.react&prev_gcd.mortal_strike)|!prev_gcd.mortal_strike)
+    colossus_smash,if=debuff.colossus_smash.down
+    warbreaker,if=debuff.colossus_smash.down/ravager/overpower,if=buff.overpower.react
+    run_action_list,name=cleave,if=spell_targets.whirlwind>=2&talent.sweeping_strikes.enabled
+    run_action_list,name=aoe,if=spell_targets.whirlwind>=2&!talent.sweeping_strikes.enabled
+    run_action_list,name=execute,if=target.health.pct<=20
+    run_action_list,name=single,if=target.health.pct>20
+  Priorities (actions.single):
+    mortal_strike,if=buff.battle_cry.up&buff.focused_rage.stack>=1&buff.battle_cry.remains<gcd
+    colossus_smash,if=buff.shattered_defenses.down
+    warbreaker,if=buff.shattered_defenses.down&cooldown.mortal_strike.remains<gcd
+    focused_rage,if=((!buff.focused_rage.react&prev_gcd.mortal_strike)|!prev_gcd.mortal_strike)&buff.focused_rage.stack<3&(buff.shattered_defenses.up|cooldown.colossus_smash.remains)
+    mortal_strike/execute,if=buff.stone_heart.react
+    slam,if=buff.battle_cry_deadly_calm.up|buff.focused_rage.stack=3|rage.deficit<=30
+    execute,if=equipped.archavons_heavy_hand/slam,if=equipped.archavons_heavy_hand
+    focused_rage,if=equipped.archavons_heavy_hand
+  Priorities (actions.execute):
+    mortal_strike,if=buff.battle_cry.up&buff.focused_rage.stack=3
+    execute,if=buff.battle_cry_deadly_calm.up
+    colossus_smash,if=buff.shattered_defenses.down
+    warbreaker,if=buff.shattered_defenses.down&rage<=30
+    execute,if=buff.shattered_defenses.up&rage>22|buff.shattered_defenses.down
+    heroic_charge,if=rage.deficit>=40&(!cooldown.heroic_leap.remains|swing.mh.remains>1.2)
+  Actions:
+    auto_attack_mh             Count= 95.6|  3.18sec  DPE= 67812| 7%  DPET= 21785  DPR=    0.0  pDPS= 21631  Miss=0.00%  Hit=55092|28802|71727  Crit=113167|57605|143453|21.9%
+    avatar                     Count=  3.7| 90.00sec  DPE=     0| 0%  DPET=     0  DPR=    0.0  pDPS=     0
+    battle_cry                 Count=  9.5| 32.83sec  DPE=     0| 0%  DPET=     0  DPR=    0.0  pDPS=     0
+    charge                     Count=  3.3| 16.57sec  DPE=     0| 0%  DPET=     0  DPR=    0.0  pDPS=     0
+    colossus_smash             Count= 40.9|  7.48sec  DPE=282765|13%  DPET=213263  DPR=    0.0  pDPS= 38575  Miss=0.00%  Hit=238198|126645|314439  Crit=453766|253290|628877|20.7%
+    corrupted_blood_of_zakajz  Count=  0.0|  0.00sec  DPE=     0|10%  DPET=     0  DPR=    0.0  pDPS= 31068  TickCount=56  MissTick=0.0%  Tick=166600|14497|365861  UpTime=37.2%
+    execute                    Count= 28.3|  2.12sec  DPE=521488|17%  DPET=378853  DPR=25464.3  pDPS= 49174  Miss=0.00%  Hit=363207|45701|568755  Crit=807533|92545|1137510|35.6%
+    focused_rage               Count=138.2|  2.11sec  DPE=     0| 0%  DPET=     0  DPR=    0.0  pDPS=     0
+    heroic_charge              Count=  2.5| 16.04sec  DPE=     0| 0%  DPET=     0  DPR=    0.0  pDPS=     0
+    heroic_leap                Count=  1.5| 34.67sec  DPE=     0| 0%  DPET=     0  DPR=    0.0  pDPS=     0
+    mark_of_the_distant_army   Count= 16.1| 18.40sec  DPE= 37607| 1%  DPET=     0  DPR=    0.0  pDPS=  2026  TickCount=47  MissTick=0.0%  Tick=12797|24|14639  UpTime=7.9%
+    mortal_strike              Count= 56.2|  5.15sec  DPE=637283|40%  DPET=486135  DPR=73677.9  pDPS=119473  Miss=0.00%  Hit=392762|135033|627118  Crit=945853|270066|1254236|44.2%
+    potion_of_the_old_war      Count= 10.3|  2.51sec  DPE=186955| 2%  DPET=     0  DPR=    0.0  pDPS=  6492  Miss=0.00%  Hit=145890|138175|165810  Crit=288397|276351|331621|28.8%
+    slam                       Count= 37.8|  6.16sec  DPE=191741| 8%  DPET=146898  DPR=20087.1  pDPS= 24212  Miss=0.00%  Hit=133583|71931|175479  Crit=264019|143861|350958|44.6%
+    warbreaker                 Count=  4.9| 65.34sec  DPE=259288| 1%  DPET=197577  DPR=    0.0  pDPS=  4261  Miss=0.00%  Hit=231882|130455|315811  Crit=460636|263915|631622|12.0%
+
+  Dynamic Buffs:
+    avatar                        : start= 3.7 refresh=  0.0 interval= 90.0 trigger= 90.0 uptime=24.41%  benefit=24%
+    barracuda_mrglgagh            : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=100.00%
+    battle_cry                    : start= 9.5 refresh=  0.0 interval= 32.8 trigger= 32.8 uptime=15.78%  benefit=16%
+    bloodlust                     : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=13.52%  benefit=14%
+    chaotic_energy                : start= 1.0 refresh= 94.6 interval=  0.0 trigger=  3.2 uptime=100.00%
+    charge_movement               : start= 2.3 refresh=  0.0 interval= 16.7 trigger= 16.7 uptime= 0.16%  benefit=24%
+    corrupted_blood_of_zakajz     : start= 9.5 refresh=  0.0 interval= 32.8 trigger= 32.8 uptime=15.78%  benefit=18%
+    flask_of_the_countless_armies : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=100.00%
+    focused_rage                  : start=56.9 refresh= 81.3 interval=  5.1 trigger=  2.1 uptime=82.19%  benefit=61%
+    heroic_leap_movement          : start= 1.5 refresh=  0.0 interval= 35.0 trigger= 35.0 uptime= 0.25%  benefit=26%
+    potion_of_the_old_war         : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime= 8.45%  benefit= 8%
+    precise_strikes               : start=45.8 refresh=  0.0 interval=  6.6 trigger=  6.7 uptime=26.08%  benefit=26%
+    raid_movement                 : start= 2.5 refresh=  0.0 interval= 16.1 trigger= 16.1 uptime= 0.96%  benefit= 1%
+    shattered_defenses            : start=45.8 refresh=  0.0 interval=  6.6 trigger=  6.7 uptime=26.08%  benefit=35%
+  Up-Times:
+      1.5% : Rage Cap                      
+  Procs:
+      0.6 |  31.27sec : delayed_auto_attack
+     43.7 |   6.85sec : tactician
+  Gains:
+        83.5 : charge          (rage)
+       743.4 : melee_crit      (rage)  (overflow=3.8%)
+      1866.9 : melee_main_hand (rage)
+  Waiting: 24.65%
+
+ *** Targets *** 
+
+
+Target: Fluffy_Pillow humanoid enemy unknown 113
+  DPS: 0.0  DPS-Error=0.0/0.000%  DPS-Range=0/0.0%  DPS-Convergence=0.0%
+  HPS: 0.0 HPS-Error=0.0/0.0%
+
+  Talents: 0000000
+  Core Stats:    strength=0|0(0)  agility=0|0(0)  stamina=0|0(0)  intellect=0|0(0)  spirit=0|0(0)  health=0|115162160  mana=0|0
+  Generic Stats: mastery=0.00%|0.00%(0)  versatility=0.00%|0.00%(0)  leech=0.00%|0.00%(0)
+  Spell Stats:   power=0|0(0)  hit=0.00%|0.00%(0)  crit=0.00%|0.00%(0)  haste=0.00%|0.00%(0)  speed=0.00%|0.00%  manareg=0|0(0)
+  Attack Stats:  power=0|0(0)  hit=0.00%|0.00%(0)  crit=5.00%|5.00%(0)  expertise=0.00%|0.00%(0)  haste=0.00%|0.00%(0)  speed=0.00%|0.00%
+  Defense Stats: armor=3474|3474(3474) miss=3.00%|3.00%  dodge=3.00%|3.00%(0)  parry=3.00%|3.00%(0)  block=3.00%|3.00%(0) crit=0.00%|0.00%  versatility=0.00%|0.00%(0)
+  Priorities (actions.precombat):
+    snapshot_stats
+  Priorities:
+
+  Actions:
+  Constant Buffs: bleeding/mortal_wounds
+  Dynamic Buffs:
+    Health Decade (0 - 10)   : start= 0.8 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime= 5.46%  benefit= 5%
+    Health Decade (10 - 20)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime= 6.76%  benefit= 7%
+    Health Decade (20 - 30)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime= 8.15%  benefit= 8%
+    Health Decade (30 - 40)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=11.12%  benefit=11%
+    Health Decade (40 - 50)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=12.96%  benefit=13%
+    Health Decade (50 - 60)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=12.95%  benefit=13%
+    Health Decade (60 - 70)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=12.57%  benefit=13%
+    Health Decade (70 - 80)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=12.66%  benefit=13%
+    Health Decade (80 - 90)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=11.18%  benefit=11%
+    Health Decade (90 - 100) : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime= 6.19%  benefit= 6%
+    colossus_smash           : start=13.3 refresh= 32.5 interval= 22.9 trigger=  6.7 uptime=77.55%  benefit=80%
+  Waiting: 0.00%
+Waiting:
+    24.7% : Law
+
+Baseline Performance:
+  RNG Engine    = sse2-sfmt
+  Iterations    = 10003
+  TotalEvents   = 62390036
+  MaxEventQueue = 41
+  TargetHealth  = 115162160
+  SimSeconds    = 3000951
+  CpuSeconds    = 64.001
+  WallSeconds   = 16.704
+  SpeedUp       = 46889
+  EndTime       = 2016-09-27 15:35:28-0500 (1475008528)
+
+
