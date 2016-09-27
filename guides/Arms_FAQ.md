@@ -29,13 +29,6 @@ For the most accurate stat priorities, it's advised to run your character throug
 ##When do I cast Mortal Strike?
 Cast MS as soon as you can, do not wait for 3 Focused Rage stacks.  It's less important whether or not you wait for 3 FR stacks, and more important that you NOT use FR if you already have 3 FR stacks.  The exception to this is during Battle Cry, when you can hit FR constantly (at this point you're using the fact that FR is off the GCD to fish for Tactician procs).
 
-One way of making sure FR and Hamstring are cast as much as possible during Battle Cry is to bind this macro to a key you can hit quickly during BC (mousewheel up/down is a good candidate):
-
-```
-/cast Focused Rage
-/cast Hamstring
-```
-
 ##What is my rotation during Battle Cry?
 The rotation is fundamentally the same as your normal rotation, and follows the same rules as the rotation outside of Battle Cry.  The exceptions to this are that you should cast Hamstring (it's off the global cooldown), and you are allowed to exceed 3 stacks of Focused Rage.  When considering Slam/Execute, decide to cast these abilities as if you had full rage, even if you don't.
 
