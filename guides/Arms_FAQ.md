@@ -22,15 +22,9 @@ For the most accurate stat priorities, it's advised to run your character throug
 
 ![Use whatever neck enchant you want](neck_enchant_sim_result.png)
 
-Update: Mark of the Hidden Satyr is fixed.
-
-https://www.warcraftlogs.com/reports/CMJGxpHLzmYRakjB/#view=events&type=damage-done&ability=1
-
 ##What potion is best?
 
 ![Use deadly grace or old war](potion_sim_result.png)
-
-Update: Potion of Old War is not behaving in-game the same as it's simming, and is doing much more damage than Potion of Deadly Grace.  As of WoW build 7.0.3.22624, it's recommended to use Potion of Old War.
 
 ##When do I cast Mortal Strike?
 Cast MS as soon as you can, do not wait for 3 Focused Rage stacks.  It's less important whether or not you wait for 3 FR stacks, and more important that you NOT use FR if you already have 3 FR stacks.  The exception to this is during Battle Cry, when you can hit FR constantly (at this point you're using the fact that FR is off the GCD to fish for Tactician procs).
@@ -51,11 +45,6 @@ The normal rotation can be found [on Wowhead's Arms rotation guide](http://www.w
 Once your target's health has reached 20%, you will cast Execute instead of Mortal Strike, and no longer use rage on Focused Rage outside of Battle Cry.  If you don't have a Shattered Defenses buff, you can cast Execute at any rage, however once you obtain a Shattered Defenses buff, hold casting Execute until you can give Execute maximum rage (22).
 
 Note: You will still cast Mortal Strike **during Battle Cry** to consume 3xFR stacks obtained within Battle Cry, even when the target is at or less than 20%.
-
-##How much better are Exploit the Weakness relics?
-825 EtW relics are better than 850 non-dps relics.
-
-![EtW Trinket sim results](https://images-1.discordapp.net/.eJwFwVEOgyAMANC7cAAKBVnnbQgSNFNKaI0fy-6-977mnqdZza46ZAXYDik8NyvKM7dqG3M7ax6H2MIXZNVc9qt2FfCR6E0vdOTCQslFAsQUKERKGHFB752Du386P92O3szvDwhhItg.e_RgUgI7_Gug-MvSBn_-M9UbWb4)
 
 ##Will Arms be nerfed?
 Blizzard has said that their DPS tuning during Legion will take the form of buffing underperforming specializations, rather than nerfing top DPS specs.
