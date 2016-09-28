@@ -1,0 +1,12 @@
+title: Law's Arms Theorycrafting
+email: skywallpublicvent@gmail.com
+description: >
+  A place to post theorycrafting results in a digestable format.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://lawskywall.github.io" # the base hostname & protocol for your site
+twitter_username: lawofskywall
+github_username:  lawskywall
+
+# Build settings
+markdown: kramdown
+theme: minima
