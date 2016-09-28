@@ -1,0 +1,1287 @@
+
+warrior="No Trinket"
+level=110
+race=blood_elf
+role=attack
+position=back
+talents=1332311
+artifact=36:0:0:0:0:1136:1:1137:1:1139:1:1142:1:1145:3:1147:3:1148:3:1149:3:1150:3:1356:1
+spec=arms
+
+# This default action priority list is automatically created based on your character.
+# It is a attempt to provide you with a action list that is both simple and practicable,
+# while resulting in a meaningful and good simulation. It may not result in the absolutely highest possible dps.
+# Feel free to edit, adapt and improve it to your own needs.
+# SimulationCraft is always looking for updates and improvements to the default action lists.
+
+# Executed before combat begins. Accepts non-harmful actions only.
+actions.precombat=flask,type=countless_armies
+actions.precombat+=/food,type=nightborne_delicacy_platter
+actions.precombat+=/augmentation,type=defiled
+# Snapshot raid buffed stats before combat begins and pre-potting is done.
+actions.precombat+=/snapshot_stats
+actions.precombat+=/potion,name=old_war
+
+# Executed every time the actor is available.
+actions=charge
+actions+=/auto_attack
+actions+=/potion,name=old_war,if=(target.health.pct<20&buff.battle_cry.up)|target.time_to_die<=26
+actions+=/blood_fury,if=buff.battle_cry.up|target.time_to_die<=16
+actions+=/berserking,if=buff.battle_cry.up|target.time_to_die<=11
+actions+=/arcane_torrent,if=buff.battle_cry_deadly_calm.down&rage.deficit>40
+actions+=/battle_cry,if=(buff.bloodlust.up|time>=1)&!gcd.remains&(buff.shattered_defenses.up|(cooldown.colossus_smash.remains&cooldown.warbreaker.remains))|target.time_to_die<=10
+actions+=/avatar,if=(buff.bloodlust.up|time>=1)
+actions+=/use_item,name=gift_of_radiance
+actions+=/hamstring,if=buff.battle_cry_deadly_calm.remains>cooldown.hamstring.remains
+actions+=/heroic_leap,if=debuff.colossus_smash.up
+actions+=/rend,if=remains<gcd
+# The tl;dr of this line is to spam focused rage inside battle cry, the added nonsense is to help modeling the difficulty of timing focused rage immediately after mortal strike.
+# In game, if focused rage is used the same instant as mortal strike, rage will be deducted for focused rage, the buff is immediately consumed, but it does not buff the damage of mortal strike.
+actions+=/focused_rage,if=buff.battle_cry_deadly_calm.remains>cooldown.focused_rage.remains&(buff.focused_rage.stack<3|!cooldown.mortal_strike.up)&((!buff.focused_rage.react&prev_gcd.mortal_strike)|!prev_gcd.mortal_strike)
+actions+=/colossus_smash,if=debuff.colossus_smash.down
+actions+=/warbreaker,if=debuff.colossus_smash.down
+actions+=/ravager
+actions+=/overpower,if=buff.overpower.react
+actions+=/run_action_list,name=cleave,if=spell_targets.whirlwind>=2&talent.sweeping_strikes.enabled
+actions+=/run_action_list,name=aoe,if=spell_targets.whirlwind>=2&!talent.sweeping_strikes.enabled
+actions+=/run_action_list,name=execute,if=target.health.pct<=20
+actions+=/run_action_list,name=single,if=target.health.pct>20
+
+actions.aoe=mortal_strike
+actions.aoe+=/execute,if=buff.stone_heart.react
+actions.aoe+=/colossus_smash,if=buff.shattered_defenses.down&buff.precise_strikes.down
+actions.aoe+=/warbreaker,if=buff.shattered_defenses.down
+actions.aoe+=/whirlwind,if=talent.fervor_of_battle.enabled&(debuff.colossus_smash.up|rage.deficit<50)&(!talent.focused_rage.enabled|buff.battle_cry_deadly_calm.up|buff.cleave.up)
+actions.aoe+=/rend,if=remains<=duration*0.3
+actions.aoe+=/bladestorm
+actions.aoe+=/cleave
+actions.aoe+=/whirlwind,if=rage>=60
+actions.aoe+=/shockwave
+actions.aoe+=/storm_bolt
+
+actions.cleave=mortal_strike
+actions.cleave+=/execute,if=buff.stone_heart.react
+actions.cleave+=/colossus_smash,if=buff.shattered_defenses.down&buff.precise_strikes.down
+actions.cleave+=/warbreaker,if=buff.shattered_defenses.down
+actions.cleave+=/focused_rage,if=buff.shattered_defenses.down
+actions.cleave+=/whirlwind,if=talent.fervor_of_battle.enabled&(debuff.colossus_smash.up|rage.deficit<50)&(!talent.focused_rage.enabled|buff.battle_cry_deadly_calm.up|buff.cleave.up)
+actions.cleave+=/rend,if=remains<=duration*0.3
+actions.cleave+=/bladestorm
+actions.cleave+=/cleave
+actions.cleave+=/whirlwind,if=rage>=100|buff.focused_rage.stack=3
+actions.cleave+=/shockwave
+actions.cleave+=/storm_bolt
+
+actions.execute=mortal_strike,if=buff.battle_cry.up&buff.focused_rage.stack=3
+actions.execute+=/execute,if=buff.battle_cry_deadly_calm.up
+actions.execute+=/colossus_smash,if=buff.shattered_defenses.down
+actions.execute+=/warbreaker,if=buff.shattered_defenses.down&rage<=30
+actions.execute+=/execute,if=buff.shattered_defenses.up&rage>22|buff.shattered_defenses.down
+# actions.single+=/heroic_charge,if=rage.deficit>=40&(!cooldown.heroic_leap.remains|swing.mh.remains>1.2)
+#Remove the # above to run out of melee and charge back in for rage.
+actions.execute+=/bladestorm,interrupt=1,if=raid_event.adds.in>90|!raid_event.adds.exists|spell_targets.bladestorm_mh>desired_targets
+
+actions.single=mortal_strike,if=buff.battle_cry.up&buff.focused_rage.stack>=1&buff.battle_cry.remains<gcd
+actions.single+=/colossus_smash,if=buff.shattered_defenses.down
+actions.single+=/warbreaker,if=buff.shattered_defenses.down&cooldown.mortal_strike.remains<gcd
+actions.single+=/focused_rage,if=((!buff.focused_rage.react&prev_gcd.mortal_strike)|!prev_gcd.mortal_strike)&buff.focused_rage.stack<3&(buff.shattered_defenses.up|cooldown.colossus_smash.remains)
+actions.single+=/mortal_strike
+actions.single+=/execute,if=buff.stone_heart.react
+actions.single+=/slam,if=buff.battle_cry_deadly_calm.up|buff.focused_rage.stack=3|rage.deficit<=30
+actions.single+=/execute,if=equipped.archavons_heavy_hand
+actions.single+=/slam,if=equipped.archavons_heavy_hand
+actions.single+=/focused_rage,if=equipped.archavons_heavy_hand
+# actions.single+=/heroic_charge,if=rage.deficit>=40&(!cooldown.heroic_leap.remains|swing.mh.remains>1.2)
+#Remove the # above to run out of melee and charge back in for rage.
+actions.single+=/bladestorm,interrupt=1,if=raid_event.adds.in>90|!raid_event.adds.exists|spell_targets.bladestorm_mh>desired_targets
+
+head=vision_of_the_spider_queen,id=137451,bonus_id=1727
+neck=brysngamen_torc_of_helheim,id=133636,bonus_id=1727,enchant=mark_of_the_distant_army
+shoulders=mortar_guard_shoulderplates,id=137524,bonus_id=1727
+back=stole_of_malefic_repose,id=134404,bonus_id=1727,enchant=binding_of_strength
+chest=etheldrins_breastplate,id=136976,bonus_id=1727
+wrists=exomesh_carpalform_armplates_mk._vii,id=134502,bonus_id=1727
+hands=reinforced_mook_handguards,id=140596,bonus_id=1727
+waist=roaring_breeze_waistguard,id=137499,bonus_id=1727
+legs=legplates_of_the_swarm,id=134506,bonus_id=1727
+feet=leadfoot_earthshakers,id=134507,bonus_id=1727
+finger1=loop_of_eightfold_eyes,id=134527,bonus_id=1727,enchant=binding_of_mastery
+finger2=archdruids_tainted_seal,id=134487,bonus_id=1727,enchant=binding_of_mastery
+trinket2=terrorbound_nexus,id=137406,bonus_id=1727
+main_hand=stromkar_the_warbreaker,id=128910,gem_id=137469/137363/137377,relic_id=3412/3412/3412
+
+copy="Nature's Call_850"
+trinket1=,id=139334
+
+copy="Nature's Call_855"
+trinket1=,id=139334,bonus_id=1477
+
+copy="Nature's Call_860"
+trinket1=,id=139334,bonus_id=1482
+
+copy="Nature's Call_865"
+trinket1=,id=139334,bonus_id=1805
+
+copy="Nature's Call_870"
+trinket1=,id=139334,bonus_id=1492/1805
+
+copy="Nature's Call_875"
+trinket1=,id=139334,bonus_id=1497/1805
+
+copy="Nature's Call_880"
+trinket1=,id=139334,bonus_id=1502/1805
+
+copy="Nature's Call_885"
+trinket1=,id=139334,bonus_id=1507/1805
+
+copy="Nature's Call_890"
+trinket1=,id=139334,bonus_id=1512/1805
+
+copy="Nature's Call_895"
+trinket1=,id=139334,bonus_id=1517/1805
+
+copy="Nature's Call_835"
+trinket1=,id=139334,bonus_id=3379
+
+copy="Ravaged Seed Pod_850"
+trinket1=,id=139320
+
+copy="Ravaged Seed Pod_855"
+trinket1=,id=139320,bonus_id=1477
+
+copy="Ravaged Seed Pod_860"
+trinket1=,id=139320,bonus_id=1482
+
+copy="Ravaged Seed Pod_865"
+trinket1=,id=139320,bonus_id=1805
+
+copy="Ravaged Seed Pod_870"
+trinket1=,id=139320,bonus_id=1492/1805
+
+copy="Ravaged Seed Pod_875"
+trinket1=,id=139320,bonus_id=1497/1805
+
+copy="Ravaged Seed Pod_880"
+trinket1=,id=139320,bonus_id=1502/1805
+
+copy="Ravaged Seed Pod_885"
+trinket1=,id=139320,bonus_id=1507/1805
+
+copy="Ravaged Seed Pod_890"
+trinket1=,id=139320,bonus_id=1512/1805
+
+copy="Ravaged Seed Pod_895"
+trinket1=,id=139320,bonus_id=1517/1805
+
+copy="Ravaged Seed Pod_835"
+trinket1=,id=139320,bonus_id=3379
+
+copy="Spontaneous Appendages_850"
+trinket1=,id=139325
+
+copy="Spontaneous Appendages_855"
+trinket1=,id=139325,bonus_id=1477
+
+copy="Spontaneous Appendages_860"
+trinket1=,id=139325,bonus_id=1482
+
+copy="Spontaneous Appendages_865"
+trinket1=,id=139325,bonus_id=1805
+
+copy="Spontaneous Appendages_870"
+trinket1=,id=139325,bonus_id=1492/1805
+
+copy="Spontaneous Appendages_875"
+trinket1=,id=139325,bonus_id=1497/1805
+
+copy="Spontaneous Appendages_880"
+trinket1=,id=139325,bonus_id=1502/1805
+
+copy="Spontaneous Appendages_885"
+trinket1=,id=139325,bonus_id=1507/1805
+
+copy="Spontaneous Appendages_890"
+trinket1=,id=139325,bonus_id=1512/1805
+
+copy="Spontaneous Appendages_895"
+trinket1=,id=139325,bonus_id=1517/1805
+
+copy="Spontaneous Appendages_835"
+trinket1=,id=139325,bonus_id=3379
+
+copy="Ursoc's Rending Paw_850"
+trinket1=,id=139328
+
+copy="Ursoc's Rending Paw_855"
+trinket1=,id=139328,bonus_id=1477
+
+copy="Ursoc's Rending Paw_860"
+trinket1=,id=139328,bonus_id=1482
+
+copy="Ursoc's Rending Paw_865"
+trinket1=,id=139328,bonus_id=1805
+
+copy="Ursoc's Rending Paw_870"
+trinket1=,id=139328,bonus_id=1492/1805
+
+copy="Ursoc's Rending Paw_875"
+trinket1=,id=139328,bonus_id=1497/1805
+
+copy="Ursoc's Rending Paw_880"
+trinket1=,id=139328,bonus_id=1502/1805
+
+copy="Ursoc's Rending Paw_885"
+trinket1=,id=139328,bonus_id=1507/1805
+
+copy="Ursoc's Rending Paw_890"
+trinket1=,id=139328,bonus_id=1512/1805
+
+copy="Ursoc's Rending Paw_895"
+trinket1=,id=139328,bonus_id=1517/1805
+
+copy="Ursoc's Rending Paw_835"
+trinket1=,id=139328,bonus_id=3379
+
+copy="Chaos Talisman_825"
+trinket1=,id=137459,bonus_id=1726
+
+copy="Chaos Talisman_830"
+trinket1=,id=137459,bonus_id=1482/1726
+
+copy="Chaos Talisman_835"
+trinket1=,id=137459,bonus_id=1487/1726
+
+copy="Chaos Talisman_840"
+trinket1=,id=137459,bonus_id=1727
+
+copy="Chaos Talisman_845"
+trinket1=,id=137459,bonus_id=1497/1727
+
+copy="Chaos Talisman_850"
+trinket1=,id=137459,bonus_id=1502/1727
+
+copy="Chaos Talisman_855"
+trinket1=,id=137459,bonus_id=1507/1727
+
+copy="Chaos Talisman_860"
+trinket1=,id=137459,bonus_id=1512/1727
+
+copy="Chaos Talisman_865"
+trinket1=,id=137459,bonus_id=1517/1727
+
+copy="Chaos Talisman_870"
+trinket1=,id=137459,bonus_id=1522/1727
+
+copy="Chaos Talisman_875"
+trinket1=,id=137459,bonus_id=1527/1727
+
+copy="Chaos Talisman_880"
+trinket1=,id=137459,bonus_id=1532/1727
+
+copy="Chaos Talisman_885"
+trinket1=,id=137459,bonus_id=1537/1727
+
+copy="Chaos Talisman_890"
+trinket1=,id=137459,bonus_id=1542/1727
+
+copy="Chaos Talisman_895"
+trinket1=,id=137459,bonus_id=1547/1727
+
+copy="Faulty Countermeasure_825"
+trinket1=,id=137539,bonus_id=1726
+
+copy="Faulty Countermeasure_830"
+trinket1=,id=137539,bonus_id=1482/1726
+
+copy="Faulty Countermeasure_835"
+trinket1=,id=137539,bonus_id=1487/1726
+
+copy="Faulty Countermeasure_840"
+trinket1=,id=137539,bonus_id=1727
+
+copy="Faulty Countermeasure_845"
+trinket1=,id=137539,bonus_id=1497/1727
+
+copy="Faulty Countermeasure_850"
+trinket1=,id=137539,bonus_id=1502/1727
+
+copy="Faulty Countermeasure_855"
+trinket1=,id=137539,bonus_id=1507/1727
+
+copy="Faulty Countermeasure_860"
+trinket1=,id=137539,bonus_id=1512/1727
+
+copy="Faulty Countermeasure_865"
+trinket1=,id=137539,bonus_id=1517/1727
+
+copy="Faulty Countermeasure_870"
+trinket1=,id=137539,bonus_id=1522/1727
+
+copy="Faulty Countermeasure_875"
+trinket1=,id=137539,bonus_id=1527/1727
+
+copy="Faulty Countermeasure_880"
+trinket1=,id=137539,bonus_id=1532/1727
+
+copy="Faulty Countermeasure_885"
+trinket1=,id=137539,bonus_id=1537/1727
+
+copy="Faulty Countermeasure_890"
+trinket1=,id=137539,bonus_id=1542/1727
+
+copy="Faulty Countermeasure_895"
+trinket1=,id=137539,bonus_id=1547/1727
+
+copy="Giant Ornamental Pearl_825"
+trinket1=,id=137369,bonus_id=1726
+
+copy="Giant Ornamental Pearl_830"
+trinket1=,id=137369,bonus_id=1482/1726
+
+copy="Giant Ornamental Pearl_835"
+trinket1=,id=137369,bonus_id=1487/1726
+
+copy="Giant Ornamental Pearl_840"
+trinket1=,id=137369,bonus_id=1727
+
+copy="Giant Ornamental Pearl_845"
+trinket1=,id=137369,bonus_id=1497/1727
+
+copy="Giant Ornamental Pearl_850"
+trinket1=,id=137369,bonus_id=1502/1727
+
+copy="Giant Ornamental Pearl_855"
+trinket1=,id=137369,bonus_id=1507/1727
+
+copy="Giant Ornamental Pearl_860"
+trinket1=,id=137369,bonus_id=1512/1727
+
+copy="Giant Ornamental Pearl_865"
+trinket1=,id=137369,bonus_id=1517/1727
+
+copy="Giant Ornamental Pearl_870"
+trinket1=,id=137369,bonus_id=1522/1727
+
+copy="Giant Ornamental Pearl_875"
+trinket1=,id=137369,bonus_id=1527/1727
+
+copy="Giant Ornamental Pearl_880"
+trinket1=,id=137369,bonus_id=1532/1727
+
+copy="Giant Ornamental Pearl_885"
+trinket1=,id=137369,bonus_id=1537/1727
+
+copy="Giant Ornamental Pearl_890"
+trinket1=,id=137369,bonus_id=1542/1727
+
+copy="Giant Ornamental Pearl_895"
+trinket1=,id=137369,bonus_id=1547/1727
+
+copy="Hunger of the Pack_825"
+trinket1=,id=136975,bonus_id=1726
+
+copy="Hunger of the Pack_830"
+trinket1=,id=136975,bonus_id=1482/1726
+
+copy="Hunger of the Pack_835"
+trinket1=,id=136975,bonus_id=1487/1726
+
+copy="Hunger of the Pack_840"
+trinket1=,id=136975,bonus_id=1727
+
+copy="Hunger of the Pack_845"
+trinket1=,id=136975,bonus_id=1497/1727
+
+copy="Hunger of the Pack_850"
+trinket1=,id=136975,bonus_id=1502/1727
+
+copy="Hunger of the Pack_855"
+trinket1=,id=136975,bonus_id=1507/1727
+
+copy="Hunger of the Pack_860"
+trinket1=,id=136975,bonus_id=1512/1727
+
+copy="Hunger of the Pack_865"
+trinket1=,id=136975,bonus_id=1517/1727
+
+copy="Hunger of the Pack_870"
+trinket1=,id=136975,bonus_id=1522/1727
+
+copy="Hunger of the Pack_875"
+trinket1=,id=136975,bonus_id=1527/1727
+
+copy="Hunger of the Pack_880"
+trinket1=,id=136975,bonus_id=1532/1727
+
+copy="Hunger of the Pack_885"
+trinket1=,id=136975,bonus_id=1537/1727
+
+copy="Hunger of the Pack_890"
+trinket1=,id=136975,bonus_id=1542/1727
+
+copy="Hunger of the Pack_895"
+trinket1=,id=136975,bonus_id=1547/1727
+
+copy="Impact Tremor_825"
+trinket1=,id=140034,bonus_id=1726
+
+copy="Impact Tremor_830"
+trinket1=,id=140034,bonus_id=1482/1726
+
+copy="Impact Tremor_835"
+trinket1=,id=140034,bonus_id=1487/1726
+
+copy="Impact Tremor_840"
+trinket1=,id=140034,bonus_id=1727
+
+copy="Impact Tremor_845"
+trinket1=,id=140034,bonus_id=1497/1727
+
+copy="Impact Tremor_850"
+trinket1=,id=140034,bonus_id=1502/1727
+
+copy="Impact Tremor_855"
+trinket1=,id=140034,bonus_id=1507/1727
+
+copy="Impact Tremor_860"
+trinket1=,id=140034,bonus_id=1512/1727
+
+copy="Impact Tremor_865"
+trinket1=,id=140034,bonus_id=1517/1727
+
+copy="Impact Tremor_870"
+trinket1=,id=140034,bonus_id=1522/1727
+
+copy="Impact Tremor_875"
+trinket1=,id=140034,bonus_id=1527/1727
+
+copy="Impact Tremor_880"
+trinket1=,id=140034,bonus_id=1532/1727
+
+copy="Impact Tremor_885"
+trinket1=,id=140034,bonus_id=1537/1727
+
+copy="Impact Tremor_890"
+trinket1=,id=140034,bonus_id=1542/1727
+
+copy="Impact Tremor_895"
+trinket1=,id=140034,bonus_id=1547/1727
+
+copy="Mark of Dargrul_825"
+trinket1=,id=137357,bonus_id=1726
+
+copy="Mark of Dargrul_830"
+trinket1=,id=137357,bonus_id=1482/1726
+
+copy="Mark of Dargrul_835"
+trinket1=,id=137357,bonus_id=1487/1726
+
+copy="Mark of Dargrul_840"
+trinket1=,id=137357,bonus_id=1727
+
+copy="Mark of Dargrul_845"
+trinket1=,id=137357,bonus_id=1497/1727
+
+copy="Mark of Dargrul_850"
+trinket1=,id=137357,bonus_id=1502/1727
+
+copy="Mark of Dargrul_855"
+trinket1=,id=137357,bonus_id=1507/1727
+
+copy="Mark of Dargrul_860"
+trinket1=,id=137357,bonus_id=1512/1727
+
+copy="Mark of Dargrul_865"
+trinket1=,id=137357,bonus_id=1517/1727
+
+copy="Mark of Dargrul_870"
+trinket1=,id=137357,bonus_id=1522/1727
+
+copy="Mark of Dargrul_875"
+trinket1=,id=137357,bonus_id=1527/1727
+
+copy="Mark of Dargrul_880"
+trinket1=,id=137357,bonus_id=1532/1727
+
+copy="Mark of Dargrul_885"
+trinket1=,id=137357,bonus_id=1537/1727
+
+copy="Mark of Dargrul_890"
+trinket1=,id=137357,bonus_id=1542/1727
+
+copy="Mark of Dargrul_895"
+trinket1=,id=137357,bonus_id=1547/1727
+
+copy="Memento of Angerboda_825"
+trinket1=,id=133644,bonus_id=1726
+
+copy="Memento of Angerboda_830"
+trinket1=,id=133644,bonus_id=1482/1726
+
+copy="Memento of Angerboda_835"
+trinket1=,id=133644,bonus_id=1487/1726
+
+copy="Memento of Angerboda_840"
+trinket1=,id=133644,bonus_id=1727
+
+copy="Memento of Angerboda_845"
+trinket1=,id=133644,bonus_id=1497/1727
+
+copy="Memento of Angerboda_850"
+trinket1=,id=133644,bonus_id=1502/1727
+
+copy="Memento of Angerboda_855"
+trinket1=,id=133644,bonus_id=1507/1727
+
+copy="Memento of Angerboda_860"
+trinket1=,id=133644,bonus_id=1512/1727
+
+copy="Memento of Angerboda_865"
+trinket1=,id=133644,bonus_id=1517/1727
+
+copy="Memento of Angerboda_870"
+trinket1=,id=133644,bonus_id=1522/1727
+
+copy="Memento of Angerboda_875"
+trinket1=,id=133644,bonus_id=1527/1727
+
+copy="Memento of Angerboda_880"
+trinket1=,id=133644,bonus_id=1532/1727
+
+copy="Memento of Angerboda_885"
+trinket1=,id=133644,bonus_id=1537/1727
+
+copy="Memento of Angerboda_890"
+trinket1=,id=133644,bonus_id=1542/1727
+
+copy="Memento of Angerboda_895"
+trinket1=,id=133644,bonus_id=1547/1727
+
+copy="Spiked Counterweight_825"
+trinket1=,id=136715,bonus_id=1726
+
+copy="Spiked Counterweight_830"
+trinket1=,id=136715,bonus_id=1482/1726
+
+copy="Spiked Counterweight_835"
+trinket1=,id=136715,bonus_id=1487/1726
+
+copy="Spiked Counterweight_840"
+trinket1=,id=136715,bonus_id=1727
+
+copy="Spiked Counterweight_845"
+trinket1=,id=136715,bonus_id=1497/1727
+
+copy="Spiked Counterweight_850"
+trinket1=,id=136715,bonus_id=1502/1727
+
+copy="Spiked Counterweight_855"
+trinket1=,id=136715,bonus_id=1507/1727
+
+copy="Spiked Counterweight_860"
+trinket1=,id=136715,bonus_id=1512/1727
+
+copy="Spiked Counterweight_865"
+trinket1=,id=136715,bonus_id=1517/1727
+
+copy="Spiked Counterweight_870"
+trinket1=,id=136715,bonus_id=1522/1727
+
+copy="Spiked Counterweight_875"
+trinket1=,id=136715,bonus_id=1527/1727
+
+copy="Spiked Counterweight_880"
+trinket1=,id=136715,bonus_id=1532/1727
+
+copy="Spiked Counterweight_885"
+trinket1=,id=136715,bonus_id=1537/1727
+
+copy="Spiked Counterweight_890"
+trinket1=,id=136715,bonus_id=1542/1727
+
+copy="Spiked Counterweight_895"
+trinket1=,id=136715,bonus_id=1547/1727
+
+copy="Terrorbound Nexus_825"
+trinket1=,id=137406,bonus_id=1726
+
+copy="Terrorbound Nexus_830"
+trinket1=,id=137406,bonus_id=1482/1726
+
+copy="Terrorbound Nexus_835"
+trinket1=,id=137406,bonus_id=1487/1726
+
+copy="Terrorbound Nexus_840"
+trinket1=,id=137406,bonus_id=1727
+
+copy="Terrorbound Nexus_845"
+trinket1=,id=137406,bonus_id=1497/1727
+
+copy="Terrorbound Nexus_850"
+trinket1=,id=137406,bonus_id=1502/1727
+
+copy="Terrorbound Nexus_855"
+trinket1=,id=137406,bonus_id=1507/1727
+
+copy="Terrorbound Nexus_860"
+trinket1=,id=137406,bonus_id=1512/1727
+
+copy="Terrorbound Nexus_865"
+trinket1=,id=137406,bonus_id=1517/1727
+
+copy="Terrorbound Nexus_870"
+trinket1=,id=137406,bonus_id=1522/1727
+
+copy="Terrorbound Nexus_875"
+trinket1=,id=137406,bonus_id=1527/1727
+
+copy="Terrorbound Nexus_880"
+trinket1=,id=137406,bonus_id=1532/1727
+
+copy="Terrorbound Nexus_885"
+trinket1=,id=137406,bonus_id=1537/1727
+
+copy="Terrorbound Nexus_890"
+trinket1=,id=137406,bonus_id=1542/1727
+
+copy="Terrorbound Nexus_895"
+trinket1=,id=137406,bonus_id=1547/1727
+
+copy="Tiny Oozeling in a Jar_825"
+trinket1=,id=137439,bonus_id=1726
+
+copy="Tiny Oozeling in a Jar_830"
+trinket1=,id=137439,bonus_id=1482/1726
+
+copy="Tiny Oozeling in a Jar_835"
+trinket1=,id=137439,bonus_id=1487/1726
+
+copy="Tiny Oozeling in a Jar_840"
+trinket1=,id=137439,bonus_id=1727
+
+copy="Tiny Oozeling in a Jar_845"
+trinket1=,id=137439,bonus_id=1497/1727
+
+copy="Tiny Oozeling in a Jar_850"
+trinket1=,id=137439,bonus_id=1502/1727
+
+copy="Tiny Oozeling in a Jar_855"
+trinket1=,id=137439,bonus_id=1507/1727
+
+copy="Tiny Oozeling in a Jar_860"
+trinket1=,id=137439,bonus_id=1512/1727
+
+copy="Tiny Oozeling in a Jar_865"
+trinket1=,id=137439,bonus_id=1517/1727
+
+copy="Tiny Oozeling in a Jar_870"
+trinket1=,id=137439,bonus_id=1522/1727
+
+copy="Tiny Oozeling in a Jar_875"
+trinket1=,id=137439,bonus_id=1527/1727
+
+copy="Tiny Oozeling in a Jar_880"
+trinket1=,id=137439,bonus_id=1532/1727
+
+copy="Tiny Oozeling in a Jar_885"
+trinket1=,id=137439,bonus_id=1537/1727
+
+copy="Tiny Oozeling in a Jar_890"
+trinket1=,id=137439,bonus_id=1542/1727
+
+copy="Tiny Oozeling in a Jar_895"
+trinket1=,id=137439,bonus_id=1547/1727
+
+copy="Windscar Whetstone_825"
+trinket1=,id=137486,bonus_id=1726
+
+copy="Windscar Whetstone_830"
+trinket1=,id=137486,bonus_id=1482/1726
+
+copy="Windscar Whetstone_835"
+trinket1=,id=137486,bonus_id=1487/1726
+
+copy="Windscar Whetstone_840"
+trinket1=,id=137486,bonus_id=1727
+
+copy="Windscar Whetstone_845"
+trinket1=,id=137486,bonus_id=1497/1727
+
+copy="Windscar Whetstone_850"
+trinket1=,id=137486,bonus_id=1502/1727
+
+copy="Windscar Whetstone_855"
+trinket1=,id=137486,bonus_id=1507/1727
+
+copy="Windscar Whetstone_860"
+trinket1=,id=137486,bonus_id=1512/1727
+
+copy="Windscar Whetstone_865"
+trinket1=,id=137486,bonus_id=1517/1727
+
+copy="Windscar Whetstone_870"
+trinket1=,id=137486,bonus_id=1522/1727
+
+copy="Windscar Whetstone_875"
+trinket1=,id=137486,bonus_id=1527/1727
+
+copy="Windscar Whetstone_880"
+trinket1=,id=137486,bonus_id=1532/1727
+
+copy="Windscar Whetstone_885"
+trinket1=,id=137486,bonus_id=1537/1727
+
+copy="Windscar Whetstone_890"
+trinket1=,id=137486,bonus_id=1542/1727
+
+copy="Windscar Whetstone_895"
+trinket1=,id=137486,bonus_id=1547/1727
+
+copy="Chrono Shard_840"
+trinket1=,id=137419,bonus_id=1727
+
+copy="Chrono Shard_845"
+trinket1=,id=137419,bonus_id=1497/1727
+
+copy="Chrono Shard_850"
+trinket1=,id=137419,bonus_id=1502/1727
+
+copy="Chrono Shard_855"
+trinket1=,id=137419,bonus_id=1507/1727
+
+copy="Chrono Shard_860"
+trinket1=,id=137419,bonus_id=1512/1727
+
+copy="Chrono Shard_865"
+trinket1=,id=137419,bonus_id=1517/1727
+
+copy="Chrono Shard_870"
+trinket1=,id=137419,bonus_id=1522/1727
+
+copy="Chrono Shard_875"
+trinket1=,id=137419,bonus_id=1527/1727
+
+copy="Chrono Shard_880"
+trinket1=,id=137419,bonus_id=1532/1727
+
+copy="Chrono Shard_885"
+trinket1=,id=137419,bonus_id=1537/1727
+
+copy="Chrono Shard_890"
+trinket1=,id=137419,bonus_id=1542/1727
+
+copy="Chrono Shard_895"
+trinket1=,id=137419,bonus_id=1547/1727
+
+copy="Gift of Radiance_825"
+trinket1=,id=133647,bonus_id=1726
+
+copy="Gift of Radiance_830"
+trinket1=,id=133647,bonus_id=1482/1726
+
+copy="Gift of Radiance_835"
+trinket1=,id=133647,bonus_id=1487/1726
+
+copy="Gift of Radiance_840"
+trinket1=,id=133647,bonus_id=1727
+
+copy="Gift of Radiance_845"
+trinket1=,id=133647,bonus_id=1497/1727
+
+copy="Gift of Radiance_850"
+trinket1=,id=133647,bonus_id=1502/1727
+
+copy="Gift of Radiance_855"
+trinket1=,id=133647,bonus_id=1507/1727
+
+copy="Gift of Radiance_860"
+trinket1=,id=133647,bonus_id=1512/1727
+
+copy="Gift of Radiance_865"
+trinket1=,id=133647,bonus_id=1517/1727
+
+copy="Gift of Radiance_870"
+trinket1=,id=133647,bonus_id=1522/1727
+
+copy="Gift of Radiance_875"
+trinket1=,id=133647,bonus_id=1527/1727
+
+copy="Gift of Radiance_880"
+trinket1=,id=133647,bonus_id=1532/1727
+
+copy="Gift of Radiance_885"
+trinket1=,id=133647,bonus_id=1537/1727
+
+copy="Gift of Radiance_890"
+trinket1=,id=133647,bonus_id=1542/1727
+
+copy="Gift of Radiance_895"
+trinket1=,id=133647,bonus_id=1547/1727
+
+copy="Infernal Alchemist Stone_815"
+trinket1=,id=127842,bonus_id=596
+
+copy="Infernal Alchemist Stone_820"
+trinket1=,id=127842,bonus_id=597
+
+copy="Infernal Alchemist Stone_825"
+trinket1=,id=127842,bonus_id=598
+
+copy="Infernal Alchemist Stone_830"
+trinket1=,id=127842,bonus_id=599
+
+copy="Infernal Alchemist Stone_835"
+trinket1=,id=127842,bonus_id=666
+
+copy="Infernal Alchemist Stone_840"
+trinket1=,id=127842,bonus_id=667
+
+copy="Infernal Alchemist Stone_845"
+trinket1=,id=127842,bonus_id=668
+
+copy="Infernal Alchemist Stone_850"
+trinket1=,id=127842,bonus_id=669
+
+copy="Infernal Alchemist Stone_855"
+trinket1=,id=127842,bonus_id=670
+
+copy="Strand of the Stars_840"
+trinket1=,id=137487,bonus_id=1727
+
+copy="Strand of the Stars_845"
+trinket1=,id=137487,bonus_id=1497/1727
+
+copy="Strand of the Stars_850"
+trinket1=,id=137487,bonus_id=1502/1727
+
+copy="Strand of the Stars_855"
+trinket1=,id=137487,bonus_id=1507/1727
+
+copy="Strand of the Stars_860"
+trinket1=,id=137487,bonus_id=1512/1727
+
+copy="Strand of the Stars_865"
+trinket1=,id=137487,bonus_id=1517/1727
+
+copy="Strand of the Stars_870"
+trinket1=,id=137487,bonus_id=1522/1727
+
+copy="Strand of the Stars_875"
+trinket1=,id=137487,bonus_id=1527/1727
+
+copy="Strand of the Stars_880"
+trinket1=,id=137487,bonus_id=1532/1727
+
+copy="Strand of the Stars_885"
+trinket1=,id=137487,bonus_id=1537/1727
+
+copy="Strand of the Stars_890"
+trinket1=,id=137487,bonus_id=1542/1727
+
+copy="Strand of the Stars_895"
+trinket1=,id=137487,bonus_id=1547/1727
+
+copy="Darkmoon Deck: Dominion_815"
+trinket1=,id=128705,bonus_id=596
+
+copy="Darkmoon Deck: Dominion_820"
+trinket1=,id=128705,bonus_id=597
+
+copy="Darkmoon Deck: Dominion_825"
+trinket1=,id=128705,bonus_id=598
+
+copy="Darkmoon Deck: Dominion_830"
+trinket1=,id=128705,bonus_id=599
+
+copy="Darkmoon Deck: Dominion_835"
+trinket1=,id=128705,bonus_id=666
+
+copy="Darkmoon Deck: Dominion_840"
+trinket1=,id=128705,bonus_id=667
+
+copy="Darkmoon Deck: Dominion_845"
+trinket1=,id=128705,bonus_id=668
+
+copy="Darkmoon Deck: Dominion_850"
+trinket1=,id=128705,bonus_id=669
+
+copy="Darkmoon Deck: Dominion_855"
+trinket1=,id=128705,bonus_id=670
+
+copy="Horn of Valor_825"
+trinket1=,id=133642,bonus_id=1726
+
+copy="Horn of Valor_830"
+trinket1=,id=133642,bonus_id=1482/1726
+
+copy="Horn of Valor_835"
+trinket1=,id=133642,bonus_id=1487/1726
+
+copy="Horn of Valor_840"
+trinket1=,id=133642,bonus_id=1727
+
+copy="Horn of Valor_845"
+trinket1=,id=133642,bonus_id=1497/1727
+
+copy="Horn of Valor_850"
+trinket1=,id=133642,bonus_id=1502/1727
+
+copy="Horn of Valor_855"
+trinket1=,id=133642,bonus_id=1507/1727
+
+copy="Horn of Valor_860"
+trinket1=,id=133642,bonus_id=1512/1727
+
+copy="Horn of Valor_865"
+trinket1=,id=133642,bonus_id=1517/1727
+
+copy="Horn of Valor_870"
+trinket1=,id=133642,bonus_id=1522/1727
+
+copy="Horn of Valor_875"
+trinket1=,id=133642,bonus_id=1527/1727
+
+copy="Horn of Valor_880"
+trinket1=,id=133642,bonus_id=1532/1727
+
+copy="Horn of Valor_885"
+trinket1=,id=133642,bonus_id=1537/1727
+
+copy="Horn of Valor_890"
+trinket1=,id=133642,bonus_id=1542/1727
+
+copy="Horn of Valor_895"
+trinket1=,id=133642,bonus_id=1547/1727
+
+copy="Marfisi's Giant Censer_810"
+trinket1=,id=141586
+
+copy="Marfisi's Giant Censer_815"
+trinket1=,id=141586,bonus_id=1477
+
+copy="Marfisi's Giant Censer_820"
+trinket1=,id=141586,bonus_id=1482
+
+copy="Marfisi's Giant Censer_825"
+trinket1=,id=141586,bonus_id=1487
+
+copy="Marfisi's Giant Censer_830"
+trinket1=,id=141586,bonus_id=1492
+
+copy="Marfisi's Giant Censer_835"
+trinket1=,id=141586,bonus_id=1497
+
+copy="Marfisi's Giant Censer_840"
+trinket1=,id=141586,bonus_id=1502
+
+copy="Marfisi's Giant Censer_845"
+trinket1=,id=141586,bonus_id=1507
+
+copy="Marfisi's Giant Censer_850"
+trinket1=,id=141586,bonus_id=1512
+
+copy="Marfisi's Giant Censer_855"
+trinket1=,id=141586,bonus_id=1517
+
+copy="Marfisi's Giant Censer_860"
+trinket1=,id=141586,bonus_id=1522
+
+copy="Marfisi's Giant Censer_865"
+trinket1=,id=141586,bonus_id=1527
+
+copy="Marfisi's Giant Censer_870"
+trinket1=,id=141586,bonus_id=1532
+
+copy="Marfisi's Giant Censer_875"
+trinket1=,id=141586,bonus_id=1537
+
+copy="Marfisi's Giant Censer_880"
+trinket1=,id=141586,bonus_id=1542
+
+copy="Marfisi's Giant Censer_885"
+trinket1=,id=141586,bonus_id=1547
+
+copy="Marfisi's Giant Censer_890"
+trinket1=,id=141586,bonus_id=1552
+
+copy="Goblet of Nightmarish Ichor_850"
+trinket1=,id=139324
+
+copy="Goblet of Nightmarish Ichor_855"
+trinket1=,id=139324,bonus_id=1477
+
+copy="Goblet of Nightmarish Ichor_860"
+trinket1=,id=139324,bonus_id=1482
+
+copy="Goblet of Nightmarish Ichor_865"
+trinket1=,id=139324,bonus_id=1805
+
+copy="Goblet of Nightmarish Ichor_870"
+trinket1=,id=139324,bonus_id=1492/1805
+
+copy="Goblet of Nightmarish Ichor_875"
+trinket1=,id=139324,bonus_id=1497/1805
+
+copy="Goblet of Nightmarish Ichor_880"
+trinket1=,id=139324,bonus_id=1502/1805
+
+copy="Goblet of Nightmarish Ichor_885"
+trinket1=,id=139324,bonus_id=1507/1805
+
+copy="Goblet of Nightmarish Ichor_890"
+trinket1=,id=139324,bonus_id=1512/1805
+
+copy="Goblet of Nightmarish Ichor_895"
+trinket1=,id=139324,bonus_id=1517/1805
+
+copy="Goblet of Nightmarish Ichor_835"
+trinket1=,id=139324,bonus_id=3379
+
+copy="Nightmare Egg Shell_825"
+trinket1=,id=137312,bonus_id=1726
+
+copy="Nightmare Egg Shell_830"
+trinket1=,id=137312,bonus_id=1482/1726
+
+copy="Nightmare Egg Shell_835"
+trinket1=,id=137312,bonus_id=1487/1726
+
+copy="Nightmare Egg Shell_840"
+trinket1=,id=137312,bonus_id=1727
+
+copy="Nightmare Egg Shell_845"
+trinket1=,id=137312,bonus_id=1497/1727
+
+copy="Nightmare Egg Shell_850"
+trinket1=,id=137312,bonus_id=1502/1727
+
+copy="Nightmare Egg Shell_855"
+trinket1=,id=137312,bonus_id=1507/1727
+
+copy="Nightmare Egg Shell_860"
+trinket1=,id=137312,bonus_id=1512/1727
+
+copy="Nightmare Egg Shell_865"
+trinket1=,id=137312,bonus_id=1517/1727
+
+copy="Nightmare Egg Shell_870"
+trinket1=,id=137312,bonus_id=1522/1727
+
+copy="Nightmare Egg Shell_875"
+trinket1=,id=137312,bonus_id=1527/1727
+
+copy="Nightmare Egg Shell_880"
+trinket1=,id=137312,bonus_id=1532/1727
+
+copy="Nightmare Egg Shell_885"
+trinket1=,id=137312,bonus_id=1537/1727
+
+copy="Nightmare Egg Shell_890"
+trinket1=,id=137312,bonus_id=1542/1727
+
+copy="Nightmare Egg Shell_895"
+trinket1=,id=137312,bonus_id=1547/1727
+
+copy="An'she's Strength/Mastery_810"
+trinket1=,id=139102,bonus_id=605/1825
+
+copy="An'she's Strength/Mastery_815"
+trinket1=,id=139102,bonus_id=605/1477/1825
+
+copy="An'she's Strength/Mastery_820"
+trinket1=,id=139102,bonus_id=605/1482/1825
+
+copy="An'she's Strength/Mastery_825"
+trinket1=,id=139102,bonus_id=605/1487/1825
+
+copy="An'she's Strength/Mastery_830"
+trinket1=,id=139102,bonus_id=605/1492/1825
+
+copy="An'she's Strength/Mastery_835"
+trinket1=,id=139102,bonus_id=605/1497/1825
+
+copy="An'she's Strength/Mastery_840"
+trinket1=,id=139102,bonus_id=605/1502/1825
+
+copy="An'she's Strength/Mastery_845"
+trinket1=,id=139102,bonus_id=605/1507/1825
+
+copy="An'she's Strength/Mastery_850"
+trinket1=,id=139102,bonus_id=605/1512/1825
+
+copy="An'she's Strength/Mastery_855"
+trinket1=,id=139102,bonus_id=605/1517/1825
+
+copy="An'she's Strength/Mastery_860"
+trinket1=,id=139102,bonus_id=605/1522/1825
+
+copy="An'she's Strength/Mastery_865"
+trinket1=,id=139102,bonus_id=605/1527/1825
+
+copy="An'she's Strength/Mastery_870"
+trinket1=,id=139102,bonus_id=605/1532/1825
+
+copy="An'she's Strength/Mastery_875"
+trinket1=,id=139102,bonus_id=605/1537/1825
+
+copy="An'she's Strength/Mastery_880"
+trinket1=,id=139102,bonus_id=605/1542/1825
+
+copy="An'she's Strength/Mastery_885"
+trinket1=,id=139102,bonus_id=605/1547/1825
+
+copy="An'she's Strength/Mastery_890"
+trinket1=,id=139102,bonus_id=605/1552/1825
+
+copy="An'she's Strength/Crit_810"
+trinket1=,id=139102,bonus_id=603/1825
+
+copy="An'she's Strength/Crit_815"
+trinket1=,id=139102,bonus_id=603/1477/1825
+
+copy="An'she's Strength/Crit_820"
+trinket1=,id=139102,bonus_id=603/1482/1825
+
+copy="An'she's Strength/Crit_825"
+trinket1=,id=139102,bonus_id=603/1487/1825
+
+copy="An'she's Strength/Crit_830"
+trinket1=,id=139102,bonus_id=603/1492/1825
+
+copy="An'she's Strength/Crit_835"
+trinket1=,id=139102,bonus_id=603/1497/1825
+
+copy="An'she's Strength/Crit_840"
+trinket1=,id=139102,bonus_id=603/1502/1825
+
+copy="An'she's Strength/Crit_845"
+trinket1=,id=139102,bonus_id=603/1507/1825
+
+copy="An'she's Strength/Crit_850"
+trinket1=,id=139102,bonus_id=603/1512/1825
+
+copy="An'she's Strength/Crit_855"
+trinket1=,id=139102,bonus_id=603/1517/1825
+
+copy="An'she's Strength/Crit_860"
+trinket1=,id=139102,bonus_id=603/1522/1825
+
+copy="An'she's Strength/Crit_865"
+trinket1=,id=139102,bonus_id=603/1527/1825
+
+copy="An'she's Strength/Crit_870"
+trinket1=,id=139102,bonus_id=603/1532/1825
+
+copy="An'she's Strength/Crit_875"
+trinket1=,id=139102,bonus_id=603/1537/1825
+
+copy="An'she's Strength/Crit_880"
+trinket1=,id=139102,bonus_id=603/1542/1825
+
+copy="An'she's Strength/Crit_885"
+trinket1=,id=139102,bonus_id=603/1547/1825
+
+copy="An'she's Strength/Crit_890"
+trinket1=,id=139102,bonus_id=603/1552/1825
+
+copy="An'she's Strength/Haste_810"
+trinket1=,id=139102,bonus_id=604/1825
+
+copy="An'she's Strength/Haste_815"
+trinket1=,id=139102,bonus_id=604/1477/1825
+
+copy="An'she's Strength/Haste_820"
+trinket1=,id=139102,bonus_id=604/1482/1825
+
+copy="An'she's Strength/Haste_825"
+trinket1=,id=139102,bonus_id=604/1487/1825
+
+copy="An'she's Strength/Haste_830"
+trinket1=,id=139102,bonus_id=604/1492/1825
+
+copy="An'she's Strength/Haste_835"
+trinket1=,id=139102,bonus_id=604/1497/1825
+
+copy="An'she's Strength/Haste_840"
+trinket1=,id=139102,bonus_id=604/1502/1825
+
+copy="An'she's Strength/Haste_845"
+trinket1=,id=139102,bonus_id=604/1507/1825
+
+copy="An'she's Strength/Haste_850"
+trinket1=,id=139102,bonus_id=604/1512/1825
+
+copy="An'she's Strength/Haste_855"
+trinket1=,id=139102,bonus_id=604/1517/1825
+
+copy="An'she's Strength/Haste_860"
+trinket1=,id=139102,bonus_id=604/1522/1825
+
+copy="An'she's Strength/Haste_865"
+trinket1=,id=139102,bonus_id=604/1527/1825
+
+copy="An'she's Strength/Haste_870"
+trinket1=,id=139102,bonus_id=604/1532/1825
+
+copy="An'she's Strength/Haste_875"
+trinket1=,id=139102,bonus_id=604/1537/1825
+
+copy="An'she's Strength/Haste_880"
+trinket1=,id=139102,bonus_id=604/1542/1825
+
+copy="An'she's Strength/Haste_885"
+trinket1=,id=139102,bonus_id=604/1547/1825
+
+copy="An'she's Strength/Haste_890"
+trinket1=,id=139102,bonus_id=604/1552/1825
+
+copy="An'she's Strength/Vers_810"
+trinket1=,id=139102,bonus_id=607/1825
+
+copy="An'she's Strength/Vers_815"
+trinket1=,id=139102,bonus_id=607/1477/1825
+
+copy="An'she's Strength/Vers_820"
+trinket1=,id=139102,bonus_id=607/1482/1825
+
+copy="An'she's Strength/Vers_825"
+trinket1=,id=139102,bonus_id=607/1487/1825
+
+copy="An'she's Strength/Vers_830"
+trinket1=,id=139102,bonus_id=607/1492/1825
+
+copy="An'she's Strength/Vers_835"
+trinket1=,id=139102,bonus_id=607/1497/1825
+
+copy="An'she's Strength/Vers_840"
+trinket1=,id=139102,bonus_id=607/1502/1825
+
+copy="An'she's Strength/Vers_845"
+trinket1=,id=139102,bonus_id=607/1507/1825
+
+copy="An'she's Strength/Vers_850"
+trinket1=,id=139102,bonus_id=607/1512/1825
+
+copy="An'she's Strength/Vers_855"
+trinket1=,id=139102,bonus_id=607/1517/1825
+
+copy="An'she's Strength/Vers_860"
+trinket1=,id=139102,bonus_id=607/1522/1825
+
+copy="An'she's Strength/Vers_865"
+trinket1=,id=139102,bonus_id=607/1527/1825
+
+copy="An'she's Strength/Vers_870"
+trinket1=,id=139102,bonus_id=607/1532/1825
+
+copy="An'she's Strength/Vers_875"
+trinket1=,id=139102,bonus_id=607/1537/1825
+
+copy="An'she's Strength/Vers_880"
+trinket1=,id=139102,bonus_id=607/1542/1825
+
+copy="An'she's Strength/Vers_885"
+trinket1=,id=139102,bonus_id=607/1547/1825
+
+copy="An'she's Strength/Vers_890"
+trinket1=,id=139102,bonus_id=607/1552/1825
