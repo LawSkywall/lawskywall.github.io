@@ -82,3 +82,5 @@ Relic Name | DPS
 830 Irrelevant Trait|222675
 825 Irrelevant Trait|222263
 No Relics|209168
+
+###### Sims thanks to @Fuze#0992, profile thanks to @IceCold#0888
